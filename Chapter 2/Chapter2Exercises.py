@@ -65,6 +65,48 @@
 #
 #     print(author, ':', title)
 # -------------------------------------------------------------------------
+import re
+
+line = '127.0.0.1 - rj [13/Nov/2019:14:34:30 -0000] "GET HTTP/1.0" 200'
+
+# --use re module to get the ip address
+
+# print(re.search(r'(?P<IP>\d+\.\d+\.\d+\.\d+)', line))
+#
+# m = re.search(r'(?P<IP>\d+\.\d+\.\d+\.\d+)', line)
+#
+# print(m.group('IP'))
+#
+# # --use re module to get the time
+#
+# r = r'(?P<Time>\d\d/\w{3}/\d{4}:\d{2}:\d{2}:\d{2})'
+#
+# k = re.search(r, line)
+#
+# print(k.group('Time'))
+
+r = r'(?P<IP>\d+\.\d+\.\d+\.\d+)'
+
+r += r' - (?P<User>\w+) '
+
+r += r'\[(?P<Time>\d\d/\w{3}/\d{4}:\d{2}:\d{2}:\d{2})'
+
+#r += r' (?P<Request>".+")'
+
+m = re.search(r, line)
+
+print(m.group('IP'))
+
+print(m.group('User'))
+
+print(m.group('Time'))
+
+print(m.group('Request'))
+
+
+
+
+
 
 
 
